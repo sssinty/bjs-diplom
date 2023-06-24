@@ -32,7 +32,7 @@ moneyTransactions.addMoneyCallback = refill => {
     ApiConnector.addMoney(refill, callback => {
         if(callback.success == true) {
             ProfileWidget.showProfile(callback.data);
-            alert('Баланс пополнен успешно!');
+            moneyTransactions.setMessage(callback.success, callback.error = 'Баланс пополнен успешно!');
         } else {
             moneyTransactions.setMessage(callback.success, callback.error);
         }
@@ -43,7 +43,7 @@ moneyTransactions.conversionMoneyCallback = conversion => {
     ApiConnector.convertMoney(conversion, callback => {
         if(callback.success == true) {
             ProfileWidget.showProfile(callback.data);
-            alert('Конвертация выполнена успешно!');
+            moneyTransactions.setMessage(callback.success, callback.error = 'Конвертация выполнена успешно!');
         } else {
             moneyTransactions.setMessage(callback.success, callback.error);
         }
@@ -54,7 +54,7 @@ moneyTransactions.sendMoneyCallback = transfer => {
     ApiConnector.transferMoney(transfer, callback => {
         if(callback.success == true) {
             ProfileWidget.showProfile(callback.data);
-            alert('Перевод выполнен успешно!');
+            moneyTransactions.setMessage(callback.success, callback.error = 'Перевод выполнен успешно!');
         } else {
             moneyTransactions.setMessage(callback.success, callback.error);
         }
